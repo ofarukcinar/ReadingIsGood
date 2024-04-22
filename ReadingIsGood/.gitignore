@@ -22,9 +22,9 @@ project.lock.json
 x64/
 x86/
 build/
-data/
 bld/
 [Bb]in/
+[Dd]ata/
 [Oo]bj/
 msbuild.log
 msbuild.err
