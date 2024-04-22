@@ -22,6 +22,7 @@ project.lock.json
 x64/
 x86/
 build/
+data/
 bld/
 [Bb]in/
 [Oo]bj/
