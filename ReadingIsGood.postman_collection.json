@@ -1,0 +1,754 @@
+{
+	"info": {
+		"_postman_id": "837f35cf-c948-43ac-b05e-7d3f023dfc52",
+		"name": "ReadingIsGood",
+		"description": "Implementing JWT Authentication in ReadingIsGood\n\nContact Support:\n Name: Omer Cinar\n Email: ofarukcinar1@gmail.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "order",
+					"item": [
+						{
+							"name": "Retrieves orders between the specified dates.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/orders/by-date?startDate=1969-09-28T00:14:53.302Z&endDate=1969-09-28T00:14:53.302Z",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"by-date"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "1969-09-28T00:14:53.302Z",
+											"description": "The start date of the period."
+										},
+										{
+											"key": "endDate",
+											"value": "1969-09-28T00:14:53.302Z",
+											"description": "The end date of the period."
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/orders/by-date?startDate=1969-09-28T00:14:53.302Z&endDate=1969-09-28T00:14:53.302Z",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"orders",
+												"by-date"
+											],
+											"query": [
+												{
+													"key": "startDate",
+													"value": "1969-09-28T00:14:53.302Z"
+												},
+												{
+													"key": "endDate",
+													"value": "1969-09-28T00:14:53.302Z"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Creates a new order.",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"books\": [\n    {\n      \"bookId\": 20886181,\n      \"count\": 1369957082\n    },\n    {\n      \"bookId\": -65562044,\n      \"count\": 818975181\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/order",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"order"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"books\": [\n    {\n      \"bookId\": 67420816,\n      \"count\": 1183033853\n    },\n    {\n      \"bookId\": 33848327,\n      \"count\": 1248694447\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/order",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"order"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "books",
+					"item": [
+						{
+							"name": "Retrieves all books.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/books",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"books"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/books",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"books"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Creates a new book.",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/book?Title=commodo officia ex reprehenderit&Price=96666460.62892771",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"book"
+									],
+									"query": [
+										{
+											"key": "Title",
+											"value": "commodo officia ex reprehenderit",
+											"description": "(Required) "
+										},
+										{
+											"key": "Price",
+											"value": "96666460.62892771",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/book?Title=commodo officia ex reprehenderit&Price=96666460.62892771",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"book"
+											],
+											"query": [
+												{
+													"key": "Title",
+													"value": "commodo officia ex reprehenderit"
+												},
+												{
+													"key": "Price",
+													"value": "96666460.62892771"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Retrieves the stock information of a book.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/books/:id/stock",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"books",
+										":id",
+										"stock"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "-9486316",
+											"description": "(Required) The ID of the book."
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/books/:id/stock",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"books",
+												":id",
+												"stock"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-9486316",
+													"description": "(Required) The ID of the book."
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Updates the stock information of a book.",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/books/stock?Id=-9486316&Count=1222686766",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"books",
+										"stock"
+									],
+									"query": [
+										{
+											"key": "Id",
+											"value": "-9486316",
+											"description": "(Required) "
+										},
+										{
+											"key": "Count",
+											"value": "1222686766",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/books/stock?Id=-9486316&Count=1222686766",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"books",
+												"stock"
+											],
+											"query": [
+												{
+													"key": "Id",
+													"value": "-9486316"
+												},
+												{
+													"key": "Count",
+													"value": "1222686766"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "customer",
+					"item": [
+						{
+							"name": "Creates a new customer.",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"J1RI2xGPTn6@xQujGqmqOUp.yn\",\n  \"name\": \"tempor labore laboris anim\",\n  \"password\": \"cupidatat\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/customer",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"customer"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"J1RI2xGPTn6@xQujGqmqOUp.yn\",\n  \"name\": \"tempor labore laboris anim\",\n  \"password\": \"cupidatat\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/customer",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"customer"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Retrieves orders for the authenticated customer.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/customer/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"orders"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/customer/orders",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"customer",
+												"orders"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Authenticates a customer.",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"MDt@aqI.lmzz\",\n  \"password\": \"in culpa\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"MDt@aqI.lmzz\",\n  \"password\": \"in culpa\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "statistic",
+					"item": [
+						{
+							"name": "Retrieves monthly order statistics for the authenticated customer.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/order-montly-statistics",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"order-montly-statistics"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/order-montly-statistics",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"order-montly-statistics"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:9090",
+			"type": "string"
+		}
+	]
+}
