@@ -58,7 +58,7 @@ orders, and view their order history.
 
 1. Clone the project: `git clone https://github.com/ofarukcinar/ReadingIsGood`
 2. Navigate to the project directory in the terminal or in Visual Studio.
-3. Alternatively, Dockerize the project and run it using Docker Compose:
+3. Dockerize the project and run it using Docker Compose:
 
 ```bash
 docker-compose up --build -d
