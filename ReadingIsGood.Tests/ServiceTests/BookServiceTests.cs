@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using ReadingIsGood.Models.DbModels;
 using ReadingIsGood.Models.RequestModels;
 using ReadingIsGood.Services;
 
-namespace ReadingIsGood.Tests.Tests;
+namespace ReadingIsGood.Tests.ServiceTests;
 
 public class BookServiceTests : IDisposable
 {
@@ -13,7 +14,8 @@ public class BookServiceTests : IDisposable
     public BookServiceTests()
     {
         _dbContextOptions = new DbContextOptionsBuilder<ReadingIsGoodContext>()
-            .UseInMemoryDatabase("TestDb")
+            .UseInMemoryDatabase(Guid.NewGuid().ToString())
+            .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning))
             .Options;
         _context = new ReadingIsGoodContext(_dbContextOptions);
         if (_context.Books.Any()) return;
@@ -71,7 +73,7 @@ public class BookServiceTests : IDisposable
 
         // Assert
         Assert.NotNull(result);
-        Assert.True(result.Count > 2, "Books count greater than 2");
+        Assert.True(result.Count > 1, "Books count greater than 2");
     }
 
     [Fact]

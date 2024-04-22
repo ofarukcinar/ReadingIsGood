@@ -4,7 +4,7 @@ using ReadingIsGood.Models.DbModels;
 using ReadingIsGood.Models.RequestModels;
 using ReadingIsGood.Services;
 
-namespace ReadingIsGood.Tests.Tests;
+namespace ReadingIsGood.Tests.ServiceTests;
 
 public class OrderServiceTests : IDisposable
 {
@@ -13,9 +13,8 @@ public class OrderServiceTests : IDisposable
 
     public OrderServiceTests()
     {
-        var _dbContextOptions = new DbContextOptionsBuilder<ReadingIsGoodContext>()
+        _dbContextOptions = new DbContextOptionsBuilder<ReadingIsGoodContext>()
             .UseInMemoryDatabase(Guid.NewGuid().ToString())
-            // don't raise the error warning us that the in memory db doesn't support transactions
             .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning))
             .Options;
 

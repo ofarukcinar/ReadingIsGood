@@ -2,12 +2,12 @@ using Microsoft.EntityFrameworkCore;
 using ReadingIsGood.Models.DbModels;
 using ReadingIsGood.Services;
 
-namespace ReadingIsGood.Tests.Tests;
+namespace ReadingIsGood.Tests.ServiceTests;
 
 public class StatisticServiceTests : IDisposable
 {
-    private readonly DbContextOptions<ReadingIsGoodContext> _dbContextOptions;
     private readonly ReadingIsGoodContext _context;
+    private readonly DbContextOptions<ReadingIsGoodContext> _dbContextOptions;
 
     public StatisticServiceTests()
     {

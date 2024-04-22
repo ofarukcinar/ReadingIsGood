@@ -64,6 +64,8 @@ orders, and view their order history.
 docker-compose up --build -d
 ```
 
+4. By importing the Postman Collection (ReadingIsGood.postman_collection.json) file into Postman, a request can be made to the **http://localhost:9090** port. Necessary configurations have been made.
+
 **UserName:** john.doe@example.com
 
 **Password:** xayTZL21

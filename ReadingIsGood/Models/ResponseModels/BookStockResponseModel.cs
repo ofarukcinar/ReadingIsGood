@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace ReadingIsGood.Models.ResponseModels;
 
 public class BookStockResponseModel
