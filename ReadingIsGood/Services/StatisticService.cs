@@ -6,7 +6,7 @@ using ReadingIsGood.Models.ResponseModels;
 
 namespace ReadingIsGood.Services;
 
-public class StatisticService : BaseService, IStatisticService
+public class StatisticService : IStatisticService
 {
     private readonly ReadingIsGoodContext _db;
 
@@ -53,12 +53,10 @@ public class StatisticService : BaseService, IStatisticService
                 })
                 .OrderByDescending(s => s.Month)
                 .ToList();
-            SaveLog("GetMonthlyOrderStatistics");
             return statistics;
         }
         catch (Exception ex)
         {
-            SaveError("Statistics not calculated!");
             throw new InvalidOperationException("Statistics not calculated!");
         }
     }

@@ -19,7 +19,7 @@ view their orders, and check stock availability.
 #### 2. Orders
 
 - **POST /api/order**: Creates a new order.
-- **GET /api/orders/by-date**: Lists orders within a specified date range.
+- **GET /api/orders**: Lists orders within a specified date range.
 
 #### 3. Customers
 
@@ -53,6 +53,7 @@ orders, and view their order history.
 - Dependency Injection
 - Unit Test (xUnit)
 - Moq (Mocking)
+- ELK Stack (Elasticsearch, Logstash, Kibana)
 
 ### Installation
 
@@ -65,6 +66,8 @@ docker-compose up --build -d
 ```
 
 4. By importing the Postman Collection (ReadingIsGood.postman_collection.json) file into Postman, a request can be made to the **http://localhost:9090** port. Necessary configurations have been made.
+
+5. Access Kibana for monitoring request and exception logs at **http://localhost:5601**. The ELK stack setup ensures comprehensive logging and monitoring of all requests and exceptions.
 
 **UserName:** john.doe@example.com
 

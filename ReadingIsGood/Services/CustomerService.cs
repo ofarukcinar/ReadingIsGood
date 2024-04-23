@@ -9,7 +9,7 @@ using ReadingIsGood.Models.ViewModels;
 
 namespace ReadingIsGood.Services;
 
-public class CustomerService : BaseService, ICustomerService
+public class CustomerService : ICustomerService
 {
     private readonly ReadingIsGoodContext _db;
 
@@ -21,10 +21,7 @@ public class CustomerService : BaseService, ICustomerService
     public ResponseModel<CustomerVM> CreateCustomer(CustomerRequestModel customerRequestModel)
     {
         if (GetCustomer(customerRequestModel) != null)
-        {
-            SaveErrorWithData("Email has been used.", customerRequestModel);
             return new ResponseModel<CustomerVM>(customerRequestModel.Adapt<CustomerVM>(), "Email has been used.");
-        }
 
         var hasher = new Hasher(customerRequestModel.Password);
         var customer = customerRequestModel.Adapt<Customer>();
@@ -32,7 +29,6 @@ public class CustomerService : BaseService, ICustomerService
         _db.Customers.Add(customer);
         _db.SaveChanges();
         var customerVm = customer.Adapt<CustomerVM>();
-        SaveLogWithData("Customer added.", customerVm);
         return new ResponseModel<CustomerVM>(customerVm);
     }
 
@@ -44,23 +40,15 @@ public class CustomerService : BaseService, ICustomerService
             .ThenInclude(s => s.Book)
             .ToList();
         var orderVMs = orders.Adapt<List<OrderVM>>();
-        SaveLogWithData("User orders received.", customerId);
         return new ResponseModel<List<OrderVM>>(orderVMs);
     }
 
     public int ValidateUser(CustomerLoginRequestModel customerRequestModel)
     {
         var customer = GetCustomer(customerRequestModel.Adapt<CustomerRequestModel>());
-        if (customer == null)
-            return 0;
+        if (customer == null) return 0;
         var hasher = new Hasher(Convert.FromBase64String(customer.Password));
         if (customer?.Password != null && !hasher.Verify(customerRequestModel?.Password)) return 0;
-        if (customer?.Id == 0)
-        {
-            SaveErrorWithData("Customer not validate!", customerRequestModel);
-            throw new UnauthorizedAccessException();
-        }
-
         return customer.Id;
     }
 
