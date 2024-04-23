@@ -9,6 +9,9 @@ using ReadingIsGood.Interfaces;
 using ReadingIsGood.Models;
 using ReadingIsGood.Models.DbModels;
 using ReadingIsGood.Services;
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.Elasticsearch;
 
 var builder = WebApplication.CreateBuilder(args);
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
@@ -16,6 +19,24 @@ var connectionString = builder.Configuration.GetConnectionString("ReadingIsGoodC
 builder.Services.AddDbContext<ReadingIsGoodContext>(options => { options.UseNpgsql(connectionString); });
 
 builder.Services.AddControllers();
+
+Log.Logger = new LoggerConfiguration()
+    .Enrich.FromLogContext()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://localhost:9200"))
+    {
+        IndexFormat = "Ready-Is-Good-{0:yyyy.MM.dd.HH.mm.ss}",
+        AutoRegisterTemplate = true,
+        NumberOfShards = 2,
+        NumberOfReplicas = 1
+    })
+    .CreateLogger();
+
+builder.Services.AddLogging(loggingBuilder =>
+{
+    loggingBuilder.ClearProviders();
+    loggingBuilder.AddSerilog();
+});
 
 var securityScheme = new OpenApiSecurityScheme
 {
@@ -109,8 +130,8 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<ReadingIsGoodContext>();
-
-    dbContext.Database.Migrate();
+    if (!dbContext.Books.Any())
+        dbContext.Database.Migrate();
 }
 
 // Configure the HTTP request pipeline.
@@ -128,5 +149,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseMiddleware<RequestLoggingMiddleware>();
 
 app.Run();

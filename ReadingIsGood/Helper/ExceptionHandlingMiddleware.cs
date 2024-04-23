@@ -33,18 +33,13 @@ public class ExceptionHandlingMiddleware
         var response = context.Response;
 
         var errorResponse = new ResponseModel<string?>(JsonSerializer.Serialize(exception.Data), exception.Message);
-        switch (exception)
-        {
-            case ApplicationException ex:
 
-                response.StatusCode = (int)HttpStatusCode.BadRequest;
-                break;
-            default:
-                response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                break;
-        }
+        if (exception is ApplicationException)
+            response.StatusCode = (int)HttpStatusCode.BadRequest;
+        else
+            response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-        _logger.LogError(exception.Message);
+        _logger.LogError(exception, "Unhandled exception occurred.");
         var result = JsonSerializer.Serialize(errorResponse);
         await context.Response.WriteAsync(result);
     }

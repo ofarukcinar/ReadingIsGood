@@ -41,7 +41,7 @@ public class OrderController : BaseController
     /// <param name="endDate">The end date of the period.</param>
     /// <returns>The response containing the orders within the specified date range.</returns>
     [Authorize]
-    [Route("api/orders/by-date")]
+    [Route("api/orders")]
     [HttpGet]
     public IActionResult GetOrdersByDate(DateTime startDate, DateTime endDate)
     {

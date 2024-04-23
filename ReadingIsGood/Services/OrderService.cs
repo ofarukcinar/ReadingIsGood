@@ -7,7 +7,7 @@ using ReadingIsGood.Models.ViewModels;
 
 namespace ReadingIsGood.Services;
 
-public class OrderService : BaseService, IOrderService
+public class OrderService : IOrderService
 {
     private readonly ReadingIsGoodContext _db;
     private readonly object _lockObject = new();
@@ -26,7 +26,6 @@ public class OrderService : BaseService, IOrderService
             .OrderBy(x => x.Id)
             .ToList();
         var orderVMs = orders.Adapt<List<OrderVM>>();
-        SaveLog("GetOrders");
         return orderVMs;
     }
 
@@ -62,7 +61,6 @@ public class OrderService : BaseService, IOrderService
             catch (Exception)
             {
                 transaction.Rollback();
-                SaveErrorWithData("Order could not be created", createOrderRequestModel);
                 throw new InvalidOperationException("order could not be created");
             }
         }
