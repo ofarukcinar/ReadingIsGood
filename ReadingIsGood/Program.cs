@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -19,25 +20,43 @@ var connectionString = builder.Configuration.GetConnectionString("ReadingIsGoodC
 builder.Services.AddDbContext<ReadingIsGoodContext>(options => { options.UseNpgsql(connectionString); });
 
 builder.Services.AddControllers();
+var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
 Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
     .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://localhost:9200"))
     {
-        IndexFormat = "Ready-Is-Good-{0:yyyy.MM.dd.HH.mm.ss}",
+        IndexFormat = "Ready-Is-Good-{0:yyyy.MM.dd}",
         AutoRegisterTemplate = true,
         NumberOfShards = 2,
         NumberOfReplicas = 1
     })
     .CreateLogger();
 
+// Environment değişkenlerini logla
+Log.Information("Environment Variables:");
+foreach (DictionaryEntry entry in Environment.GetEnvironmentVariables())
+{
+    Log.Information("{Key}: {Value}", entry.Key, entry.Value);
+}
+
+var config = builder.Configuration;
+Log.Information("Application Configuration:");
+foreach (var section in config.GetChildren())
+{
+    Log.Information("[{Section}]", section.Key);
+    foreach (var child in section.GetChildren())
+    {
+        Log.Information("{Key}: {Value}", child.Key, child.Value);
+    }
+}
+
 builder.Services.AddLogging(loggingBuilder =>
 {
     loggingBuilder.ClearProviders();
     loggingBuilder.AddSerilog();
 });
-
 var securityScheme = new OpenApiSecurityScheme
 {
     Name = "Authorization",
