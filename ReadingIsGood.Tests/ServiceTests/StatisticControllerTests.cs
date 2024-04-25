@@ -31,10 +31,10 @@ public class StatisticServiceTests : IDisposable
         var statisticService = new StatisticService(_context);
 
         // Act
-        var statistics = statisticService.GetMonthlyOrderStatistics(1);
+        var statistics = statisticService.GetMonthlyOrderStatistics(1,DateTime.UtcNow.AddMonths(-3),DateTime.UtcNow);
 
         // Assert
         Assert.NotNull(statistics);
-        Assert.Equal(3, statistics.Count());
+        Assert.Equal(2, statistics.Count());
     }
 }

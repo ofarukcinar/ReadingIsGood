@@ -1,36 +1,20 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/ActualSeverity/@EntryValue">WARNING</s:String>
 	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">/Users/omer/Library/Caches/JetBrains/Rider2022.2/resharper-host/temp/Rider/vAny/CoverageData/_ReadingIsGood.-1735338142/Snapshot/snapshot.utdcvr</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5fd21c80_002D4ca7_002D42c7_002D94b3_002D2785e3b7b795/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="OrderControllerTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::DF25F5A7-79B8-42EE-AE31-E933B5616498::net7.0::ReadingIsGood.Tests.OrderControllerTests&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7c0e4229_002D0c5a_002D4c9a_002D9839_002D1533079f0115/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetCustomerOrders_ShouldReturnOkResultWithResponseModel" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5fd21c80_002D4ca7_002D42c7_002D94b3_002D2785e3b7b795/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="OrderControllerTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Project Location="/Users/omer/RiderProjects/ReadingIsGood/ReadingIsGood.Tests" Presentation="&amp;lt;ReadingIsGood.Tests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b27a7f24_002De080_002D482a_002Db1a3_002Ddedd08187645/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetCustomerOrders_Returns_OkResult_With_Authenticated_User" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::DF25F5A7-79B8-42EE-AE31-E933B5616498::net7.0::ReadingIsGood.Tests.CustomerControllerTests.GetCustomerOrders_Returns_OkResult_With_Authenticated_User&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7c0e4229_002D0c5a_002D4c9a_002D9839_002D1533079f0115/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetCustomerOrders_ShouldReturnOkResultWithResponseModel" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Project Location="/Users/omer/RiderProjects/ReadingIsGood/ReadingIsGood.Tests" Presentation="&amp;lt;ReadingIsGood.Tests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bde17d0f_002Dc7b1_002D47cd_002D8aad_002Dad9a06b1f22a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CreateCustomer_Returns_OkResult_With_Valid_Data" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::DF25F5A7-79B8-42EE-AE31-E933B5616498::net7.0::ReadingIsGood.Tests.CustomerControllerTests.CreateCustomer_Returns_OkResult_With_Valid_Data&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
+	
+	
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c41745e3_002D5b33_002D434e_002D8835_002D45f60fd3e1e9/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetMonthlyOrderStatistics_ShouldReturnCorrectStatistics" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::151E00C9-66E3-4045-837F-4875C73F58B0::net7.0::ReadingIsGood.Tests.Tests.CustomerControllerTests.CreateCustomer_ShouldReturnOkResultWithResponseModel&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=dd676cf1_002Da938_002D4593_002Db76e_002D47f1f948da64/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Login_Returns_Token_With_Valid_Credentials" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::151E00C9-66E3-4045-837F-4875C73F58B0::net7.0::ReadingIsGood.Tests.UnitTest1.Test1&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::151E00C9-66E3-4045-837F-4875C73F58B0::net7.0::StatisticServiceTests.GetMonthlyOrderStatistics_ShouldReturnCorrectStatistics&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::151E00C9-66E3-4045-837F-4875C73F58B0::net7.0::ReadingIsGood.Tests.Tests.StatisticServiceTests.GetMonthlyOrderStatistics_ShouldReturnCorrectStatistics&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
+	
 	
 	
 	

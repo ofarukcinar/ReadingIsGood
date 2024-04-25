@@ -15,46 +15,29 @@ public class StatisticService : IStatisticService
         _db = db;
     }
 
-    public List<StatisticResponseModel> GetMonthlyOrderStatistics(int customerId)
+    public List<StatisticResponseModel> GetMonthlyOrderStatistics(int customerId,DateTime startDate, DateTime endDate)
     {
         try
         {
-            var now = DateTime.UtcNow;
-
-            var lastMonthStartDate = now.AddMonths(-1).Date.AddDays(1 - now.Day);
-
-            var lastMonthEndDate = now.Date.AddDays(-now.Day);
-
-            var previousMonthStartDate = now.AddMonths(-2).Date.AddDays(1 - now.Day);
-
-            var previousMonthEndDate = lastMonthStartDate.AddDays(-1);
-
-            var twoMonthsAgoStartDate = now.AddMonths(-3).Date.AddDays(1 - now.Day);
-
-            var twoMonthsAgoEndDate = previousMonthStartDate.AddDays(-1);
-
-            var lastThreeMonthsOrders = _db.Orders
-                .Where(x => (x.CustomerId == customerId &&
-                             x.OrderDate >= twoMonthsAgoStartDate && x.OrderDate <= twoMonthsAgoEndDate) ||
-                            (x.OrderDate >= previousMonthStartDate && x.OrderDate <= previousMonthEndDate) ||
-                            (x.OrderDate >= lastMonthStartDate && x.OrderDate <= lastMonthEndDate))
+            var statistics = _db.Orders
+                .Where(x => x.CustomerId == customerId && x.OrderDate >= startDate && x.OrderDate <= endDate)
                 .Include(o => o.Stocks)
                 .ThenInclude(s => s.Book)
-                .ToList();
-
-            var statistics = lastThreeMonthsOrders
-                .GroupBy(o => new { Month = o.OrderDate.ToString("MMMM", CultureInfo.InvariantCulture) })
+                .GroupBy(o => new { Year = o.OrderDate.Year, Month = o.OrderDate.Month })
                 .Select(group => new StatisticResponseModel
                 {
+                    Year = group.Key.Year,
                     Month = group.Key.Month,
                     TotalOrderCount = group.Count(),
-                    TotalBookCount = group.Sum(o => o.Stocks.Select(s => s.BookId).Count()),
+                    TotalBookCount = group.Sum(o => o.Stocks.Count),
                     TotalPurchasedAmount = group.Sum(o => o.Stocks.Sum(s => s.Book.Price))
                 })
-                .OrderByDescending(s => s.Month)
+                .OrderBy(s => s.Year).ThenBy(s=>s.Month)
                 .ToList();
+
             return statistics;
         }
+
         catch (Exception ex)
         {
             throw new InvalidOperationException("Statistics not calculated!");

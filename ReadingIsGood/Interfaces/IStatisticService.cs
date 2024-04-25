@@ -4,5 +4,5 @@ namespace ReadingIsGood.Interfaces;
 
 public interface IStatisticService
 {
-    List<StatisticResponseModel> GetMonthlyOrderStatistics(int customerId);
+    List<StatisticResponseModel> GetMonthlyOrderStatistics(int customerId, DateTime startDate, DateTime endDate);
 }

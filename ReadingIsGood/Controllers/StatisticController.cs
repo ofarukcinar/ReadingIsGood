@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.JavaScript;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ReadingIsGood.Interfaces;
@@ -21,9 +22,12 @@ public class StatisticController : BaseController
     [Authorize]
     [Route("api/order-montly-statistics")]
     [HttpGet]
-    public IActionResult GetOrderMonthlyStatistics()
+    public IActionResult GetOrderMonthlyStatistics(DateTime startDate, DateTime endDate)
     {
-        var response = _statisticService.GetMonthlyOrderStatistics(GetCustomerId());
+        if (endDate <= startDate)
+            return Ok(new ResponseModel<bool>(false, "endDate cannot be greater than Start Date!"));
+
+        var response = _statisticService.GetMonthlyOrderStatistics(GetCustomerId(), startDate, endDate);
         return Ok(new ResponseModel<List<StatisticResponseModel>>(response));
     }
 }
